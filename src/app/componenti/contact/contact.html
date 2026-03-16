@@ -1,9 +1,7 @@
-@if (!isProfile){
-    @for (persona of persone; track persona; let i = $index){
-        <div>
-            <a routerLink="/contact/{{i}}">{{persona.nome}} {{persona.cognome}}</a>
-        </div> 
-    } 
-}@else {
-    <p>Profile contatto di {{persona.nome}} {{persona.cognome}}. colore: {{persona.colore}}</p>        
-}
+
+@for (persona of persone; track persona; let i = $index){
+    <div>
+        <a routerLink="/contact/{{i}}">{{persona.nome}} {{persona.cognome}}</a>
+    </div> 
+} 
+<router-outlet></router-outlet>

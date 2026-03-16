@@ -1,0 +1,11 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Detaglio contatto di {{persona.nome}} {{persona.cognome}} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <li>Colore preferita : {{persona.colore}}</li>
+    <li><label>Status<p class="cerchio" [ngClass]="
+                        {'cerchioOnline': persona.isOnline, 
+                        'cerchioOffline' : ! persona.isOnline}"></p></label></li>
+  </mat-card-content>
+</mat-card>
