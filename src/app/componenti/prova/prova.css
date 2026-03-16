@@ -1,0 +1,34 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.cerchio{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: blue;
+    text-align: center;
+    color: white;
+
+}
+li{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+li>p{
+    margin-bottom: 0;
+}
+.cerchioOnline{
+    background-color: green;
+    color: white;
+}
+.cerchioOffline{
+    background-color: red;
+    color: white;
+}

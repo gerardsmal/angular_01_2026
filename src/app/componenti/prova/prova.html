@@ -1,0 +1,95 @@
+<!--
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{title}}</mat-card-title>
+        <mat-card-subtitle>{{cani[0].razza}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>
+            {{cani[0].descrizione}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button matButton [disabled]="isDisable">LIKE</button>
+        <button mat-stroked-button (click)="hoCliccato('aaaa')">basic</button>
+        <mat-form-field class="example-full-width">
+            <mat-label>Favorite food</mat-label>
+            <input matInput placeholder="Ex. Pizza" [(ngModel)]="title"/>  
+        </mat-form-field>
+
+    </mat-card-actions>
+</mat-card>
+
+@if (daVedere) {
+    <div>
+        <p>Sono visibile</p>
+    </div>    
+} @else {
+       <div>
+        <p>NON Sono visibile</p>
+    </div>
+}
+
+<div>
+    @if (daVedere) {
+        @for (persona of persone; track persona; let i =$index ; let isFist= $first; let isLast = $last){
+    <div>
+        <li>
+            {{i}} {{isFist}}/{{isLast}} {{persona.nome}} {{persona.cognome}}
+        </li>
+    </div>
+         }
+    }
+    <p>Switch</p>
+    @switch (numero) {
+        @case(1){
+            <p>Uno</p>
+        }
+    @case(1){
+            <p>Uno</p>
+        }
+    @case(2){
+            <p>Due</p>
+        }
+    @case(3){
+            <p>tre</p>
+        }
+    @default {
+        <p>valore per default</p>
+    }
+    }
+
+ @switch (stringa) {
+        @case('pippo'){
+            <p>Prima valore</p>
+        }
+        @case('pluto'){
+                <p>seconda valore</p>
+            }
+        @case("papenrina"){
+                <p>terza valore</p>
+            }
+        @default {
+            <p>valore non trovata</p>
+        }
+    }
+
+</div>
+-->
+@for (persona of data; track persona; let i = $index){
+    <li>
+        <div class="cerchio" [ngClass]="{
+            cerchioOnline: persona.isOnline,
+            cerchioOffline: !persona.isOnline
+        }">
+        {{i}}    
+       </div>
+        <p>{{persona.nome}} {{persona.cognome}}</p>
+       
+    </li>
+         
+}
+<button mat-stroked-button (click)="mandaDati()">Invia msg</button>
+    
