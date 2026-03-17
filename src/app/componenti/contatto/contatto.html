@@ -1,11 +1,43 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-    <mat-card-title>Detaglio contatto di {{persona.nome}} {{persona.cognome}} </mat-card-title>
+    <mat-card-title>Detaglio contatto di {{persona()?.nome}} {{persona()?.cognome}} </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <li>Colore preferita : {{persona.colore}}</li>
-    <li><label>Status<p class="cerchio" [ngClass]="
-                        {'cerchioOnline': persona.isOnline, 
-                        'cerchioOffline' : ! persona.isOnline}"></p></label></li>
+    <div class="form-container">
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-column">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" name="nome" formControlName="nome">
+        </mat-form-field>
+        <mat-form-field class="form-column">
+          <mat-label>Cognome</mat-label>
+          <input matInput type="text" name="cognome" formControlName="cognome">
+        </mat-form-field>
+        <mat-form-field class="form-column">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="form-column">
+          <mat-label>Colore</mat-label>
+          <mat-select name="colore" formControlName="colore">
+            <mat-option value="green">Verde</mat-option>
+            <mat-option value="red">Rosso</mat-option>
+            <mat-option value="grey">Griggio</mat-option>
+            <mat-option value="blu">Blu</mat-option>
+            <mat-option value="pink">Rose</mat-option>
+            <mat-option value="yellow">Giallo</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="button-group">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!updateForm.valid">Aggiorna</button>
+
+        </div>
+
+
+
+
+      </form>
+    </div>
   </mat-card-content>
 </mat-card>

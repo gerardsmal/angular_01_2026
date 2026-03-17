@@ -1,5 +1,6 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,6 +46,7 @@ import { NotFound } from './componenti/not-found/not-found';
     MatSelectModule
   ],
   providers: [
+    provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(), 
     provideClientHydration(withEventReplay())],
   bootstrap: [App],

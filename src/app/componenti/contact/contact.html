@@ -1,7 +1,12 @@
-
-@for (persona of persone; track persona; let i = $index){
-    <div>
-        <a routerLink="/contact/{{i}}">{{persona.nome}} {{persona.cognome}}</a>
-    </div> 
-} 
-<router-outlet></router-outlet>
+<div style="display:flex; gap:30px; align-items: flex-start;">
+    <div style="min-width: 250px;">
+        @for (persona of persone(); track persona.id){
+        <div>
+            <a routerLink="/contact/{{persona.id}}">{{persona.nome}} {{persona.cognome}}</a>
+        </div>
+        }
+    </div>
+    <div style="flex: 1;">
+        <router-outlet></router-outlet>
+    </div>
+</div>
