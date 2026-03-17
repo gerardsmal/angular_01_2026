@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProvaServices } from '../../services/prova-services';
 import { PersoneServices } from '../../services/persone-services';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +21,11 @@ export class Contatto implements OnInit{
     colore: new FormControl(null, Validators.required),
   })
   
-  constructor(private route:ActivatedRoute, private service:PersoneServices){}
+  constructor(
+    private route:ActivatedRoute, 
+    private service:PersoneServices,
+    private routing:Router
+  ){}
   
   ngOnInit(): void {
     // controllo della vairazione del parametro
@@ -52,8 +56,32 @@ export class Contatto implements OnInit{
   }
 
   onSubmit(){
-    
+    const updatBody:any = {id: this.id}
+    if (this.updateForm.controls['nome'].dirty){
+      updatBody.nome = this.updateForm.value.nome
+    }
+    if (this.updateForm.controls['cognome'].dirty){
+      updatBody.cognome = this.updateForm.value.cognome
+    }
+    if (this.updateForm.controls['email'].dirty){
+      updatBody.email = this.updateForm.value.email
+    }
+   if (this.updateForm.controls['colore'].dirty){
+      updatBody.colore = this.updateForm.value.colore
+    }
+    this.service.update(updatBody)
+      .subscribe({
+        next: ((r:any) => {
+          console.log(r);
+          this.routing.navigate(['contact'])
+        }),
+        error:((r:any) => {
+          console.log(r);
+        })
+      })
   }
-
+  onAnnul(){
+    this.routing.navigate(['contact'])
+  }
 
 }
