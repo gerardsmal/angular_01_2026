@@ -35,4 +35,9 @@ export class PersoneServices {
     return this.http.put(this.url + "update" , body)
       .pipe(tap(() => this.list()))
   }
+  delete(id:number){
+  //  return this.http.delete(this.url + "delete/" + id)
+      return this.http.delete (`${this.url}delete/${id}`) // backtick option + \ 
+      .pipe(tap(() => this.list()))
+  }
 }

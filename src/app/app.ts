@@ -1,4 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { AuthServices } from './auth/auth-services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,10 @@ export class App implements OnInit {
   ngOnInit(): void {
     this.persone = this.persone0;
   }
-
+  
+  constructor(private auth:AuthServices,
+              private routing:Router
+  ){}
 
   persone = [{}];
   persone0 = [
@@ -42,6 +47,9 @@ export class App implements OnInit {
     console.log("meaggio ricevuto:" + value)
   }
 
-
+logout(){
+  this.auth.resetAll();
+  this.routing.navigate(['login']);
+}
 
 }

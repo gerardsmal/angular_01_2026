@@ -5,9 +5,11 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -20,6 +22,9 @@ import { Contact } from './componenti/contact/contact';
 import { Home } from './componenti/home/home';
 import { Contatto } from './componenti/contatto/contatto';
 import { NotFound } from './componenti/not-found/not-found';
+import { DeletePersone } from './dialogs/delete-persone/delete-persone';
+import { Login } from './componenti/login/login';
+import { Registrazione } from './componenti/registrazione/registrazione';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { NotFound } from './componenti/not-found/not-found';
     Home,
     Contatto,
     NotFound,
+    DeletePersone,
+    Login,
+    Registrazione,
+    
   ],
   imports: [
     BrowserModule,
@@ -43,12 +52,15 @@ import { NotFound } from './componenti/not-found/not-found';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [
     provideHttpClient(withFetch()),
-    provideBrowserGlobalErrorListeners(), 
-    provideClientHydration(withEventReplay())],
+    provideBrowserGlobalErrorListeners(),
+    provideClientHydration(withEventReplay()),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
